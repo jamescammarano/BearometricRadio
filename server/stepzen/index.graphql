@@ -1,0 +1,3 @@
+schema @sdl(files: ["OpenWeatherMap/weather-report-owm.graphql", "LastFM/tags.graphql"]) {
+  query: Query
+}
