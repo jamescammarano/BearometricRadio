@@ -1,0 +1,14 @@
+{
+  "name": "bearometricserver",
+  "version": "1.0.0",
+  "description": "a program that recommends music to listen to based on the weather.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
