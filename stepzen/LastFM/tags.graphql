@@ -7,17 +7,18 @@ type Album {
 }
 
 type Query{
-    album(tag: String!, apiKey: String!): [Album]
+    album(tag: String!): [Album]
     @rest(
+        endpoint: "http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=$tag&api_key=$apiKey&format=json"
+        resultroot: "albums.album[]"
         setters: [
             {field:"name",path:"name"}
             {field:"url", path:"url"}
             {field:"mbid",path:"mbid"}
             {field:"artistName",path:"artist.name"}
             {field:"image",path: "image[2].`#text`"}
-            ]
-        resultroot: "albums.album[]"
-        endpoint: "http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=$tag&api_key=$apiKey&format=json"
+        ]
+        configuration: "lastfmAuth"
     )
 }
 
