@@ -2,4 +2,7 @@ configurationset:
   - configuration:
       name: lastfmAuth
       apiKey: YOUR_API_KEY
-      
+  - configuration:
+      name: discogsAuth
+      key: YOUR_API_KEY
+      secret: YOUR_API_SECRET

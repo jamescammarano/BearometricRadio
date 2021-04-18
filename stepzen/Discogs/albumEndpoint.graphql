@@ -1,0 +1,38 @@
+
+type AlbumArtists {
+    name: String!
+    tracks: String!
+    resource_url: String!
+}
+
+type Tracklist {
+    position: String!
+    title: String!
+    duration: String!
+}
+type Genres {
+    position: String!
+    title: String!
+    duration: String!
+}
+type Styles {
+    position: String!
+    title: String!
+    duration: String!
+}
+
+type Query{
+    album(tag: String!): [AlbumInfo]
+    @rest(
+        endpoint: "http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=$tag&api_key=$apiKey&format=json"
+        resultroot: "albums.album[]"
+        setters: [
+            {field:"name",path:"name"}
+            {field:"url", path:"url"}
+            {field:"mbid",path:"mbid"}
+            {field:"artistName",path:"artist.name"}
+            {field:"image",path: "image[2].`#text`"}
+        ]
+        configuration: "lastfmAuth"
+    )
+}
