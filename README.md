@@ -5,7 +5,7 @@
 
 # StepZen GraphQL:
 
-StepZen API to run a query to the Last.fm endpoint for `tag.getTopArtist` and to OpenWeatherApp.
+StepZen API to run a query to the Last.fm endpoints for `tag.getTopArtist` and `tag.getTopalbum` as well as to OpenWeatherApp.
 
 ## How to install and start
 
