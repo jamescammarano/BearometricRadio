@@ -26,3 +26,4 @@ yarn-debug.log*
 yarn-error.log*
 
 stepzen/config.yaml
+client/.env
