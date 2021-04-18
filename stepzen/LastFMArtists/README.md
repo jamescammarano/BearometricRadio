@@ -5,8 +5,8 @@ This schema requires a Last.fm API Key which can be obtained [here](https://www.
 Add the api key to a `config.yaml` file at the root of the StepZen directory.
 ```
 stepzen/
-    ├── index.graphql
     ├── config.yaml <----HERE
+    ├── index.graphql
     ├── stepzen.config.json
     └── LastFMArtists
         ├── tagsTopArtists.graphql

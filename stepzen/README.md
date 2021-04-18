@@ -4,7 +4,7 @@ The [StepZen](stepzen.com) implementation of a GraphQL API is used to run a quer
 
 **How to install and start**
 
-1. Download and install StepZen following [Install StepZen and Login to Your Account](stepzen.com/docs/quickstart/setup)
+1. Download and install StepZen following "[Install StepZen and Login to Your Account](stepzen.com/docs/quickstart/setup)"
 
 2. Add your [Last.fm API Key](https://www.last.fm/api/account/create) to `config.yaml.example` and rename the file to `config.yaml`
 
