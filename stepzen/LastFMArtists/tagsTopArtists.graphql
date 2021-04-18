@@ -1,0 +1,21 @@
+type Artist {
+    name: String!
+    mbid: String!
+    url: String!
+    image: String!
+}
+
+type Query{
+    artist(tag: String!): [Artist]
+    @rest(
+        endpoint: "http://ws.audioscrobbler.com/2.0/?method=tag.gettopartists&tag=$tag&api_key=$apiKey&format=json"
+        resultroot: "topartists.artist[]"
+        setters: [
+            {field:"name",path:"name"}
+            {field:"url", path:"url"}
+            {field:"mbid",path:"mbid"}
+            {field:"image",path: "image[2].`#text`"}
+        ]
+        configuration: "lastfmAuth"
+    )
+}
