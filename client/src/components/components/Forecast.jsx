@@ -4,10 +4,9 @@ const Forecast = ({weatherReport}) => {
     const {feelsLike, temp, units, description} = weatherReport
     return (
         <div>
-            {feelsLike}
-            {temp}
-            {units}
-            {description}
+            <p>Feels Like: {feelsLike}</p>
+            <p>Temp: {temp}</p>
+            <p>Description: {description}</p>
         </div>
     )
 }
