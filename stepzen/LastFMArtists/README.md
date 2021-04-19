@@ -1,6 +1,7 @@
 An schema for connecting to Last.FM's REST API through StepZen's GraphQL implementation.
 
-This schema requires a Last.fm API Key which can be obtained [here](https://www.last.fm/api/account/create). 
+This schema requires a Last.fm API Key which can be obtained 
+[here](https://www.last.fm/api/account/create). 
 
 Add the api key to a `config.yaml` file at the root of the StepZen directory.
 ```
@@ -13,7 +14,8 @@ stepzen/
         └── README.md
 ```
 
-Example REST API url: http://ws.audioscrobbler.com/2.0/?method=tag.gettopartists&tag=disco&api_key=YOUR_API_KEY&format=json
+Example REST API url: 
+http://ws.audioscrobbler.com/2.0/?method=tag.gettopartists&tag=disco&api_key=YOUR_API_KEY&format=json
 
 Example of the REST API Return for tag "disco":
 ```js
