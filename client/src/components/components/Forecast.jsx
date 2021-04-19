@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Weather = ({weatherReport}) => {
+const Forecast = ({weatherReport}) => {
     const {feelsLike, temp, units, description} = weatherReport
     return (
         <div>
@@ -12,4 +12,4 @@ const Weather = ({weatherReport}) => {
     )
 }
 
-export default Weather
+export default Forecast

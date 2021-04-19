@@ -3,7 +3,7 @@ import React from 'react'
 import Info from "../components/Info"
 import "../../assets/css/style.css"
 import {GET_WEATHER} from "../../helpers/queries/weather"
-import Weather from "../components/Weather"
+import Forecast from "../components/Forecast"
 
 const Main = () => {
     const GetWeather = (lat, lon) => {
@@ -15,7 +15,7 @@ const Main = () => {
         if (error) {return `Error! ${error.message}`}
         console.log(data.weatherReport.feelsLike)
         return (
-            <Weather 
+            <Forecast 
             weatherReport={data.weatherReport}
             />
         )
