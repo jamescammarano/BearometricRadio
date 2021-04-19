@@ -1,5 +1,6 @@
 schema @sdl(files: ["OpenWeatherMap/weather-report-owm.graphql", 
                     "LastFMAlbums/tags.graphql", 
-                    "LastFMArtists/tagsTopArtists.graphql"]) {
+                    "LastFMArtists/tagsTopArtists.graphql",
+                    "Discogs/albumEndpoint.graphql"]) {
   query: Query
 }
