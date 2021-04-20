@@ -1,4 +1,4 @@
-export const weather = {
+export const tagsList = {
     "thunderstorm with light rain": "lofi",
     "thunderstorm with rain": "sadcore",
     "thunderstorm with heavy rain": "hardcore.punk",
