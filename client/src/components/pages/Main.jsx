@@ -7,7 +7,7 @@ import Forecast from "../components/Forecast"
 import { tagsList } from "../../helpers/weatherToTags"
 
 const Main = () => {
-    let tag;
+    let tag = "hardcore.punk";
 
     const GetWeather = (lat, lon) => {
         const { loading, error, data } = useQuery(GET_WEATHER, {
