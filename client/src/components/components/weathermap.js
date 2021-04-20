@@ -1,4 +1,4 @@
-let map, infowindow;
+let map, infowindow, pos;
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
@@ -7,6 +7,39 @@ function initMap() {
   });
   /*/ Generate the infowindow /*/
   infowindow = new google.maps.InfoWindow();
+
+  /*/ Create the search box and link it to the UI element. /*/
+  const input = document.getElementById("pac-input");
+  const autocomplete = new google.maps.places.Autocomplete(input);
+  autocomplete.bindTo("bounds", map);
+
+  // Specify just the place data fields that you need.
+  map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+
+  /*/ Create the infowindow call box /*/
+  const infowindowContent = document.getElementById("infowindow-content");
+  infowindow.setContent(infowindowContent);
+
+  /*/ autocomplete eventListener activation function /*/
+  autocomplete.addListener("place_changed", () => {
+    infowindow.close();
+    const place = autocomplete.getPlace();
+    if (!place.geometry || !place.geometry.location) {
+      return;
+    }
+    /*/ Find the new center of the map /*/
+    if (place.geometry.viewport) {
+      map.fitBounds(place.geometry.viewport);
+    } else {
+      map.setCenter(place.geometry.location);
+      map.setZoom(7);
+      pos = {
+        lat: map.getMapCenter().lat(),
+        lng: map.getMapCenter().lng(),
+      };
+    }
+  });
+
   /*/ Location service button /*/
   const locationButton = document.createElement("button");
   locationButton.textContent = "Get Current Location";
@@ -17,14 +50,11 @@ function initMap() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          const pos = {
+          pos = {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           };
           infowindow.setPosition(pos);
-          /*/ this creates the callout for the location - make the methods the same - either a callout box or marker - not both /*/
-          infowindow.setContent("Location found.");
-          infowindow.open(map);
           map.setCenter(pos);
         },
         () => {
