@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { useQuery } from '@apollo/client';
 import {GET_LASTFM_CHARTS} from "../../helpers/queries/lastFm"
 import AlbumInfoPanel from './AlbumInfoPanel';
+import ArtistInfoPanel from './ArtistInfoPanel';
 
 const Info = () => {
+  const [artistAlbumToggle, setArtistAlbumToggle] = useState(true)
   let tabsArray = []
   
   const GetCharts = (tag) => {
@@ -12,15 +14,14 @@ const Info = () => {
       variables: { tag },
         }
       ) 
-
       if (loading) {return 'Loading...';}
       if (error) {return `Error! ${error.message}`}
       return data
     }
 
-    const data = GetCharts("disco")
-
-
+    const onClickToggle = () => {
+      setArtistAlbumToggle(!artistAlbumToggle)
+    }
 
     const randomizer = (data, count) => {
       const getRandomInt = (max) => {
@@ -30,21 +31,26 @@ const Info = () => {
       while( i < count){
         i+=1
         const selector = getRandomInt(50)
+        // clear tabsArray here
         tabsArray.push(data[selector])
       }
     }
-    
-    randomizer(data.album, 5)
+    let tabs;
+    let panels;
+    const data = GetCharts("disco")
 
-    const tabs = tabsArray.map((tab)=> {
-      return(
-          <Tab>
-            <p>{tab.name} - {tab.artistName}</p>
-          </Tab>
-          )
-        }
-      )
-      const panels = tabsArray.map((panel) => {
+    if(artistAlbumToggle === true){
+      randomizer(data.album, 5)
+      tabs = tabsArray.map((tab)=> {
+        return(
+            <Tab>
+              <p>{tab.name} - {tab.artistName}</p>
+            </Tab>
+            )
+          }
+        )
+
+      panels = tabsArray.map((panel) => {
         return(
             <TabPanel>
               <AlbumInfoPanel
@@ -53,14 +59,36 @@ const Info = () => {
           )
         }
       )
+    }else{
+      randomizer(data.artist, 5)
+      tabs = tabsArray.map((tab)=> {
+        return(
+            <Tab>
+              <p>{tab.name}</p>
+            </Tab>
+            )
+          }
+        )
+      panels = tabsArray.map((panel) => {
+        return(
+            <TabPanel>
+              <ArtistInfoPanel
+                artistInfo={panel}  />
+            </TabPanel>
+          )
+        }
+      )
+    }
+
     return (
-        <div class="steps clearfix">
-      <Tabs>
-        <TabList>
-            {tabs}
-        </TabList>
-        {panels}
-      </Tabs>
+        <div className="steps clearfix">
+          <button onClick={onClickToggle}>Artist/Album Toggle</button>
+          <Tabs>
+            <TabList>
+              {tabs}
+            </TabList>
+            {panels}
+          </Tabs>
         </div>
 
     )

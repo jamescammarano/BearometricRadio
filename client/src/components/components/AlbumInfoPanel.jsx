@@ -1,7 +1,6 @@
 import React from 'react'
 
 const AlbumInfoPanel = (albumInfo) => {
-    console.log(albumInfo)
     return (
         <div>
             <h2>{albumInfo.albumInfo.name} By {albumInfo.albumInfo.artistName}</h2>
