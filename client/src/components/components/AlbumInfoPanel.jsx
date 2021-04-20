@@ -1,10 +1,11 @@
 import React from 'react'
 
-const AlbumInfoPanel = (albumInfo) => {
+const AlbumInfoPanel = ({name, url, image, artistName}) => {
+    console.log(name)
     return (
         <div>
-            <h2>{albumInfo.albumInfo.name} By {albumInfo.albumInfo.artistName}</h2>
-            <div><img alt="cover" src={albumInfo.albumInfo.image}/></div>
+            <h2>{name} By <a href={url}>{artistName}</a></h2>
+            <div><img alt="cover" src={image}/></div>
         </div>
     )
 }

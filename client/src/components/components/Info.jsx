@@ -7,8 +7,8 @@ import ArtistInfoPanel from './ArtistInfoPanel';
 
 const Info = () => {
   const [artistAlbumToggle, setArtistAlbumToggle] = useState(true)
-  let tabsArray = []
-  
+  let artists = []
+  let albums = []
   const GetCharts = (tag) => {
     const { loading, error, data } = useQuery(GET_LASTFM_CHARTS, {
       variables: { tag },
@@ -23,7 +23,7 @@ const Info = () => {
       setArtistAlbumToggle(!artistAlbumToggle)
     }
 
-    const randomizer = (data, count) => {
+    const randomizer = (data, count, artistOrAlbum) => {
       const getRandomInt = (max) => {
         return Math.floor(Math.random() * max);
       }
@@ -32,16 +32,17 @@ const Info = () => {
         i+=1
         const selector = getRandomInt(50)
         // clear tabsArray here
-        tabsArray.push(data[selector])
+        artistOrAlbum.push(data[selector])
       }
     }
+ 
     let tabs;
     let panels;
     const data = GetCharts("disco")
-
-    if(artistAlbumToggle === true){
-      randomizer(data.album, 5)
-      tabs = tabsArray.map((tab)=> {
+      
+    if(artistAlbumToggle === true && data.album){
+      randomizer(data.album, 5, albums)
+      tabs = albums.map((tab)=> {
         return(
             <Tab>
               <p>{tab.name} - {tab.artistName}</p>
@@ -50,18 +51,40 @@ const Info = () => {
           }
         )
 
-      panels = tabsArray.map((panel) => {
+      panels = albums.map((panel) => {
         return(
             <TabPanel>
               <AlbumInfoPanel
-                albumInfo={panel}  />
+                name={panel.name}
+                url={panel.url}
+                image={panel.image}
+                artistName={panel.artistName}
+              />
             </TabPanel>
           )
         }
       )
-    }else{
-      randomizer(data.artist, 5)
-      tabs = tabsArray.map((tab)=> {
+    }
+    else if(!data.album){
+      tabs = (
+        <Tab>
+          <p>Sharptooth - Mean Brain</p>
+        </Tab>
+      )
+      panels =(
+        <TabPanel>
+          <AlbumInfoPanel 
+            name="Mean Brain" 
+            image="" 
+            url="https://www.last.fm/music/Sharptooth" 
+            artistName="Sharptooth" 
+          />
+        </TabPanel>)
+      // Sharptooth when data not found (for now) 
+    }
+    else{
+      randomizer(data.album, 5, albums)
+      tabs = artists.map((tab)=> {
         return(
             <Tab>
               <p>{tab.name}</p>
@@ -69,9 +92,9 @@ const Info = () => {
             )
           }
         )
-      panels = tabsArray.map((panel) => {
+      panels = artists.map((panel) => {
         return(
-            <TabPanel>
+            <TabPanel> 
               <ArtistInfoPanel
                 artistInfo={panel}  />
             </TabPanel>
@@ -82,7 +105,7 @@ const Info = () => {
 
     return (
         <div className="steps clearfix">
-          <button onClick={onClickToggle}>Artist/Album Toggle</button>
+          <button onClick={onClickToggle}>Toggle</button>
           <Tabs>
             <TabList>
               {tabs}
