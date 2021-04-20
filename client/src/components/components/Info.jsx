@@ -3,7 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { useQuery } from '@apollo/client';
 import {GET_LASTFM_CHARTS} from "../../helpers/queries/lastFm"
 
-const Info = () => {
+const Info = (tag) => {
   let tabsArray = [{tab: "1"},{tab: "3"},{tab: "4"},{tab: "5"}]
 
     const GetCharts = (tag) => {
@@ -15,7 +15,7 @@ const Info = () => {
       if (error) {return `Error! ${error.message}`}
       console.log(data)
     }
-    const data = GetCharts("disco")
+    const data = GetCharts(tag)
 
     const tabs = tabsArray.map((tab)=> {
       return(
