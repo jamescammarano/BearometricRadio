@@ -65,8 +65,37 @@ import {Map, GoogleApiWrapper} from 'google-maps-react';
 </GoogleApiWrapper>
 ```
 
+# Stop Reading Here!!! 
+# Lets Get More Complicated After We Get A Working Product
+
 This only loads a map via premade components from 
 `google-maps-react` and does nothing else.
 
-At this point we may need to fork and create our own
-map component.
+If we want to dynamically load the initia center
+we need to pass it in as a prop:
+
+```js
+initialCenter={{
+            lat: lat,
+            lng: lon
+          }}
+```
+
+Alternatively we may want center, which takes the same arguments. [From the Docs](https://github.com/fullstackreact/google-maps-react#additional-map-props): 
+```
+center: Takes an object containing latitude and longitude coordinates. Use this if you want to re-render the map after the initial render.
+```
+
+## Other Props That Might Be Of Interest:
+- Bools:
+    - scrollwheel,
+    - draggable
+    - keyboardShortcuts
+
+
+
+## Do We Want More?
+At this point we /may/ need to fork and create our ownmap component in order to add functionality.
+I'm checking out the additional map props to
+see though.
+
