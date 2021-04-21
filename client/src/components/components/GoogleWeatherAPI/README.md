@@ -64,14 +64,17 @@ import {Map, GoogleApiWrapper} from 'google-maps-react';
     </MapContainer>
 </GoogleApiWrapper>
 ```
-
-# Stop Reading Here!!! 
-# Lets Get More Complicated After We Get A Working Product
-
 This only loads a map via premade components from 
 `google-maps-react` and does nothing else.
 
-If we want to dynamically load the initia center
+# Stop Reading Here!!! 
+# Lets Get More Complicated After We Get A Working Product
+ Questions I Have / Things to try before we go on:
+ - How does <Map> get its og lat/lon?
+     - If its through device geolocation how do we add a search?
+     - if its through passing props where to pass the props?
+
+If we want to dynamically load the initial center
 we need to pass it in as a prop:
 
 ```js
@@ -92,10 +95,11 @@ center: Takes an object containing latitude and longitude coordinates. Use this 
     - draggable
     - keyboardShortcuts
 
-
-
+## Map Subcomponents that might be of interest:
+ - [Marker](https://github.com/fullstackreact/google-maps-react#marker), places a marker on the screen.
+ - Polygon, places a polygon on the map. /May/ be useful for the weather
+ - 
 ## Do We Want More?
 At this point we /may/ need to fork and create our ownmap component in order to add functionality.
 I'm checking out the additional map props to
 see though.
-
