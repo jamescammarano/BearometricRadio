@@ -5,6 +5,8 @@ import "../../assets/css/style.css"
 import {GET_WEATHER} from "../../helpers/queries/weather"
 import {GET_LASTFM_CHARTS} from "../../helpers/queries/lastFm"
 import Forecast from "../components/Forecast"
+import ApolloProvider from "@apollo/client"
+import {client} from "../../helpers/graphQLclient"
 
 const Main = () => {
     let artists = []
@@ -69,4 +71,8 @@ const Main = () => {
     )
 }
 
-export default Main
+export default (
+    <ApolloProvider client={client}>
+        <Main />
+    </ApolloProvider>
+)

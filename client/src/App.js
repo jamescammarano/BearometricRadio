@@ -1,16 +1,16 @@
-
-import {ApolloProvider} from "@apollo/client"
-import {client} from "./helpers/graphQLclient"
+import {Router, Switch, Route} from "react-router-dom"
 import Main from "./components/pages/Main"
+import LandingPage from "./components/pages/LandingPage"
 import './assets/css/App.css';
 
 function App() {
   return (
-    <div className="App">
-      <ApolloProvider client={client}>
-        <Main />
-      </ApolloProvider>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/app" component={Main} />
+    </Switch>
+  </Router>
   );
 }
 
