@@ -20,7 +20,7 @@ export default GoogleApiWrapper({
     apiKey: apiKey
     libraries: ['places']
 })
-```
+```  
 
  - apiKey is your API Key
  - libraries are the APIs you want to call from google
