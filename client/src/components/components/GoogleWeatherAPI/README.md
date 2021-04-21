@@ -12,7 +12,7 @@ This wrapper is provided for us in the library as
 
 The wrapper acts similar to the `ApolloProvider` 
 wrapper. It takes in the needed configuration and 
-the uses [context](https://reactjs.org/docs/context.html)
+then uses [context](https://reactjs.org/docs/context.html)
  to make this config available "globally".
 
 ```
@@ -50,7 +50,7 @@ within the `MapContainer`
 
 The loading functionality is taken care of as well 
 through the `GoogleApiWrapper`. It can be changed by 
-passing in a jsx component as a prop to the wrapper.
+passing in a jsx component as a "prop" to the wrapper.
 
 So far our code looks like 
 
