@@ -4,6 +4,7 @@ import Info from "../components/Info"
 import "../../assets/css/style.css"
 import {GET_WEATHER} from "../../helpers/queries/weather"
 import Forecast from "../components/Forecast"
+import MapContainer from "../../components/components/GoogleWeatherAPI/GoogleMapApi"
 
 const Main = () => {
     const GetWeather = (lat, lon) => {
@@ -34,6 +35,7 @@ const Main = () => {
                     <Info />
                 </div>
             </div>
+            <MapContainer />
 		</div>
     )
 }
