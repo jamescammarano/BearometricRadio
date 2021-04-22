@@ -144,6 +144,6 @@ button:hover {
 }
 .map-container {
   border: 4px solid #bbb;
-  padding: 10%;
-  width: 50%;
+  width: 100%;
+  height: 100%;
 }

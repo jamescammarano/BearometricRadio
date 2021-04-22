@@ -68,7 +68,6 @@ const Main = () => {
   };
 
   const weather = GetWeather(location.lat, location.lng)
-  console.log(weather)
   GetCharts(tag);
 
   return (

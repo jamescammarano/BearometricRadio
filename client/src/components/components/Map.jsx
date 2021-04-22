@@ -1,9 +1,7 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {
   GoogleMap,
   useLoadScript,
-  Marker,
-  InfoWindow,
 } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
   getGeocode,
@@ -16,19 +14,18 @@ import {
   ComboboxList,
   ComboboxOption,
 } from "@reach/combobox";
-import { formatRelative } from "date-fns";
-
 import "@reach/combobox/styles.css";
-import mapStyles from "../../assets/css/mapStyles";
-
+import "../../assets/css/mapStyling.css"
+import {mapStyles} from "../../assets/css/mapStyles";
 const libraries = ["places"];
 const mapContainerStyle = {
-  height: "100vh",
-  width: "100vw",
+  height: "300px",
+  width: "100%",
 };
 const options = {
   styles: mapStyles, //go to snazzymaps to change the colors
   disableDefaultUI: true, // removes all the ui elements on the map
+  rotateControl:true,
   zoomControl: true, // adds zoom control back in
 };
 const center = {
@@ -96,8 +93,7 @@ function Locate({ panTo }) {
           () => null
         );
       }}
-    >
-      <img src="/compass.svg" alt="compass" />
+    ><img src="locateme.png" alt="Locate me" />
     </button>
   );
 }
