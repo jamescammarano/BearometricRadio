@@ -1,7 +1,5 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { useQuery } from '@apollo/client';
-import {GET_LASTFM_CHARTS} from "../../helpers/queries/lastFm"
 import AlbumInfoPanel from './AlbumInfoPanel';
 import ArtistInfoPanel from './ArtistInfoPanel';
 
@@ -15,7 +13,7 @@ const Info = ({albums, artists}) => {
     let tabs;
     let panels;
 
-    if(artistAlbumToggle === true && albums){
+    if(artistAlbumToggle === true && albums.length > 0){
       tabs = albums.map((tab)=> {
         return(
             <Tab>
@@ -38,7 +36,7 @@ const Info = ({albums, artists}) => {
         }
       )
     }
-    else if(!albums){
+    else if(albums.length === 0){
       tabs = (
         <Tab>
           <p>Sharptooth - Mean Brain</p>
