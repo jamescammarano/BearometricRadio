@@ -63,6 +63,7 @@ body{
 
 .panel-content {
     text-align: center;
+    
 }
 
 input,textarea,select,button{
@@ -70,16 +71,19 @@ input,textarea,select,button{
 }
 
 p,h1,h2,h3,h4,h5,h6,ul{
-    margin:0
+    margin:0;
 }
 ul{
     padding:0;
     margin:0;
     list-style:none
 }
-a{text-decoration:none}
+a{
+    text-decoration:underline;
+    color: white
+    
+}
 textarea{resize:none}
-
 .wrapper{
     height:100vh;
     background:#f9f6f1;
@@ -95,6 +99,7 @@ textarea{resize:none}
 }
 
 button{
+    margin: 2%;
     padding:0;
     border:none;
     height:42px;
@@ -112,3 +117,4 @@ button{
 
 button i{margin-left:10px}
 button:hover{background:#d4b43f}
+
