@@ -1,7 +1,6 @@
 import React from 'react'
 
 const AlbumInfoPanel = ({name, url, image, artistName}) => {
-    console.log(name)
     return (
         <div>
             <h2 class="title">{name} By <a href={url}>{artistName}</a></h2>
