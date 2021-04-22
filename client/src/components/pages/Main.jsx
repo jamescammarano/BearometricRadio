@@ -32,8 +32,8 @@ const Main = () => {
           if (loading) {return 'Loading...';}
           if (error) {return `Error! ${error.message}`}
     
-          randomizer(data.album, 5, albums)
-          randomizer(data.artist, 5, artists)
+          randomizer(data.album, 6, albums)
+          randomizer(data.artist, 6, artists)
     
           return data
     }
@@ -55,17 +55,11 @@ const Main = () => {
     const data = GetCharts("disco")
 
     return (
-        <div className="wrapper">
-            <div className="inner">
-                <div >{weather}</div>
-                <div>Forecast</div>
-            </div>
-            <div id="wizard" role="application" className="wizard clearfix">
-                <div className="content clearfix">
-                    <Info albums={albums} artists={artists}/>
-                </div>
-            </div>
-		</div>
+        <div className="inner">
+          <div >{weather}</div>
+          <div>Forecast</div>
+          <Info albums={albums} artists={artists}/>
+        </div>
     )
 }
 

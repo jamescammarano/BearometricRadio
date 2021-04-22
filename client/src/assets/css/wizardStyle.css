@@ -39,6 +39,7 @@ img{max-width:100%;
     overflow:hidden;
     background-size:cover
 }
+
 .inner{width:909px;
         background-color: #012353;}
 .image-holder{position:relative}
@@ -48,6 +49,7 @@ img{max-width:100%;
     left:50%;
     transform:translate(-50%,-50%)
 }
+
 h3{
     color:#fff;
     text-transform:uppercase;
@@ -55,11 +57,11 @@ h3{
     border:1px solid rgba(255,255,255,.5);
     font-weight:400;
     letter-spacing:.3px}
-    .wizard{
-        padding:62px 60px 58px 62px;
-        display:flex}
-        .wizard .steps{width:26.05%;
-        margin-right:68px}
+.wizard{
+    padding:62px 60px 58px 62px;
+    display:flex}
+.wizard .steps{width:26.05%;
+    margin-right:68px}
 .wizard .content{width:73.95%}
 .steps ul{border-left:3px solid rgba(242,242,242,.4)}
 .steps li{margin-bottom:16px;

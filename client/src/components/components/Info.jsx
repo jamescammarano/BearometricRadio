@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { useQuery } from '@apollo/client';
 import {GET_LASTFM_CHARTS} from "../../helpers/queries/lastFm"
@@ -51,6 +51,7 @@ const Info = ({albums, artists}) => {
             image="" 
             url="https://www.last.fm/music/Sharptooth" 
             artistName="Sharptooth" 
+            onClickToggle={onClickToggle}
           />
         </TabPanel>)
       // Sharptooth when data not found (for now) 
@@ -76,15 +77,15 @@ const Info = ({albums, artists}) => {
     }
 
     return (
-        <div className="steps clearfix">
-          <button onClick={onClickToggle}>Toggle</button>
+      <div className="center-me">
           <Tabs>
             <TabList>
               {tabs}
             </TabList>
             {panels}
+            <button onClick={onClickToggle}>Toggle View</button>
           </Tabs>
-        </div>
+      </div>
 
     )
 }
