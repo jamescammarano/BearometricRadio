@@ -62,7 +62,7 @@ const Main = () => {
   };
 
   const weather = GetWeather(1.5, 1.5);
-  const data = GetCharts(tag);
+  GetCharts(tag);
 
   return (
     <div className="inner">
