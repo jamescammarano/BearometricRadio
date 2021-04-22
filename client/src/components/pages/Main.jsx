@@ -8,7 +8,7 @@ import Forecast from "../components/Forecast"
 import { tagsList } from "../../helpers/weatherToTags"
 
 const Main = () => {
-    let tag = "hardcore.punk";
+    let tag = "hardcore+punk";
     let artists = []
     let albums = []
 
@@ -60,8 +60,8 @@ const Main = () => {
       }
   
     const weather = GetWeather(1.5, 1.5)
-    const data = GetCharts("disco")
-
+    const data = GetCharts(tag)
+    
     return (
         <div className="inner">
           <div >{weather}</div>
