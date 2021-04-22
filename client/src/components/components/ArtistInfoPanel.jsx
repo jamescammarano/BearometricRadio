@@ -1,12 +1,16 @@
-import React from 'react'
+import React from "react";
 
 const ArtistInfoPanel = (artistInfo) => {
-    return (
-        <div>
-            <h2><a href={artistInfo.artistInfo.url}>{artistInfo.artistInfo.artistsName}</a></h2>
-            <div><img alt="Artist Imare" src={artistInfo.artistInfo.image}/></div>
-        </div>
-    )
-}
+  return (
+    <div id="artist-info">
+      <h2>
+        <a href={artistInfo.artistInfo.url}>{artistInfo.artistInfo.name}</a>
+      </h2>
+      <div>
+        <img alt="Artist" src={artistInfo.artistInfo.image} />
+      </div>
+    </div>
+  );
+};
 
-export default ArtistInfoPanel
+export default ArtistInfoPanel;
