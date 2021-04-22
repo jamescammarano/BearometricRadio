@@ -129,5 +129,6 @@ button:hover{background:#d4b43f}
 }
 .map-container{
     border: 4px solid #bbb;
+    padding: 10%;
     width: 50%;
 }
