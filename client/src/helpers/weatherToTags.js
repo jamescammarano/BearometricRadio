@@ -2,7 +2,7 @@ export const tagsList = {
     "thunderstorm with light rain": "lofi",
     "thunderstorm with rain": "sadcore",
     "thunderstorm with heavy rain": "hardcore+punk",
-    "light thunderstorm": "hardcore",
+    "light thunderstorm": "dubstep",
     "thunderstorm": "punk",
     "heavy thunderstorm": "heavy+metal",
     "ragged thunderstorm": "folk+metal",
