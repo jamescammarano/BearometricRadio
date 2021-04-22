@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Forecast = ({weatherReport}) => {
-    const {feelsLike, temp, units, description} = weatherReport
+    const {feelsLike, temp, description} = weatherReport
     return (
         <div className="forecast-container">
             <h2>Forecast</h2>
