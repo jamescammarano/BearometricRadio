@@ -5,8 +5,10 @@ import "../../assets/css/style.css"
 import {GET_WEATHER} from "../../helpers/queries/weather"
 import {GET_LASTFM_CHARTS} from "../../helpers/queries/lastFm"
 import Forecast from "../components/Forecast"
+import { tagsList } from "../../helpers/weatherToTags"
 
 const Main = () => {
+    let tag = "hardcore+punk";
     let artists = []
     let albums = []
 
@@ -17,13 +19,19 @@ const Main = () => {
         ) 
         if (loading) {return 'Loading...';}
         if (error) {return `Error! ${error.message}`}
-        console.log(data.weatherReport.feelsLike)
+
+        tag = tagsList[data.weatherReport.description]
         return (
-            <Forecast 
-            weatherReport={data.weatherReport}
-            />
+            <>
+                <Forecast 
+                weatherReport={data.weatherReport}
+                />
+                <div>Forecast</div>
+                <Info albums={albums} artists={artists}/>
+            </>
         )
     }
+
     const GetCharts = (tag) => {
         const { loading, error, data } = useQuery(GET_LASTFM_CHARTS, {
           variables: { tag },
@@ -52,13 +60,11 @@ const Main = () => {
       }
   
     const weather = GetWeather(1.5, 1.5)
-    const data = GetCharts("disco")
-
+    const data = GetCharts(tag)
+    
     return (
         <div className="inner">
           <div >{weather}</div>
-          <div>Forecast</div>
-          <Info albums={albums} artists={artists}/>
         </div>
     )
 }
