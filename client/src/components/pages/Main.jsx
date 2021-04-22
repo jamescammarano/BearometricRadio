@@ -37,9 +37,9 @@ const Main = () => {
     );
   };
 
-  const GetCharts = (lookupTag) => {
+  const GetCharts = (tag) => {
     const { loading, error, data } = useQuery(GET_LASTFM_CHARTS, {
-      variables: { lookupTag },
+      variables: { tag },
     });
     if (loading) {
       return "Loading...";
@@ -67,7 +67,7 @@ const Main = () => {
     }
   };
 
-  const weather = GetWeather(1.5, 1.5)
+  const weather = GetWeather(location.lat, location.lng)
   console.log(weather)
   GetCharts(tag);
 
