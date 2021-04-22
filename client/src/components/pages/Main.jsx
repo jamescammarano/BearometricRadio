@@ -56,8 +56,10 @@ const Main = () => {
 
     return (
         <div className="inner">
-          <div >{weather}</div>
-          <div>Forecast</div>
+          <div className="top-level">
+            <div className="map-container">Map</div>
+            {weather}
+          </div>
           <Info albums={albums} artists={artists}/>
         </div>
     )

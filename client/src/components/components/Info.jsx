@@ -1,7 +1,5 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState } from 'react'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { useQuery } from '@apollo/client';
-import {GET_LASTFM_CHARTS} from "../../helpers/queries/lastFm"
 import AlbumInfoPanel from './AlbumInfoPanel';
 import ArtistInfoPanel from './ArtistInfoPanel';
 

@@ -3,9 +3,10 @@ import React from 'react'
 const Forecast = ({weatherReport}) => {
     const {feelsLike, temp, units, description} = weatherReport
     return (
-        <div>
-            <p>Feels Like: {feelsLike}</p>
-            <p>Temp: {temp}</p>
+        <div className="forecast-container">
+            <h2>Forecast</h2>
+            <p>Feels Like: {feelsLike}°C </p>
+            <p>Temp: {temp}°C</p>
             <p>Description: {description}</p>
         </div>
     )
