@@ -39,7 +39,7 @@ const Info = ({albums, artists}) => {
     else if(!albums){
       tabs = (
         <Tab>
-          <p>Sharptooth - Mean Brain</p>
+          <p>Mean Brain by Sharptooth</p>
         </Tab>
       )
       panels =(
