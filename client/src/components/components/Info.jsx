@@ -1,49 +1,84 @@
-import React from 'react'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { useQuery } from '@apollo/client';
-import {GET_LASTFM_CHARTS} from "../../helpers/queries/lastFm"
+import React, { useState } from "react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import AlbumInfoPanel from "./AlbumInfoPanel";
+import ArtistInfoPanel from "./ArtistInfoPanel";
 
-const Info = () => {
-  let tabsArray = [{tab: "1"},{tab: "3"},{tab: "4"},{tab: "5"}]
+const Info = ({ albums, artists }) => {
+  const [artistAlbumToggle, setArtistAlbumToggle] = useState(true);
 
-    const GetCharts = (tag) => {
-      const { loading, error, data } = useQuery(GET_LASTFM_CHARTS, {
-          variables: { tag },
-          }
-      ) 
-      if (loading) {return 'Loading...';}
-      if (error) {return `Error! ${error.message}`}
-      console.log(data)
-    }
-    const data = GetCharts("disco")
+  const onClickToggle = () => {
+    setArtistAlbumToggle(!artistAlbumToggle);
+  };
 
-    const tabs = tabsArray.map((tab)=> {
-      return(
-          <Tab>
-            {tab.tab}
-          </Tab>
-          )
-        }
-      )
-      const panels = tabsArray.map((panel) => {
-        return(
-            <TabPanel>
-              {panel.tab}
-            </TabPanel>
-          )
-        }
-      )
-    return (
-        <div class="steps clearfix">
+  let tabs;
+  let panels;
+
+  if (artistAlbumToggle === true && albums.length > 0) {
+    tabs = albums.map((tab) => {
+      return (
+        <Tab>
+          <p>
+            {tab.name} - {tab.artistName}
+          </p>
+        </Tab>
+      );
+    });
+    panels = albums.map((panel) => {
+      return (
+        <TabPanel>
+          <AlbumInfoPanel
+            name={panel.name}
+            url={panel.url}
+            image={panel.image}
+            artistName={panel.artistName}
+          />
+        </TabPanel>
+      );
+    });
+  } else if (albums.length === 0) {
+    tabs = (
+      <Tab>
+        <p>Mean Brain by Sharptooth</p>
+      </Tab>
+    );
+    panels = (
+      <TabPanel>
+        <AlbumInfoPanel
+          name="Mean Brain"
+          image=""
+          url="https://www.last.fm/music/Sharptooth"
+          artistName="Sharptooth"
+          onClickToggle={onClickToggle}
+        />
+      </TabPanel>
+    );
+    // Sharptooth when data not found (for now)
+  } else {
+    tabs = artists.map((tab) => {
+      return (
+        <Tab>
+          <p>{tab.name}</p>
+        </Tab>
+      );
+    });
+    panels = artists.map((panel) => {
+      return (
+        <TabPanel>
+          <ArtistInfoPanel artistInfo={panel} />
+        </TabPanel>
+      );
+    });
+  }
+
+  return (
+    <div className="center-me">
       <Tabs>
-        <TabList>
-            {tabs}
-        </TabList>
+        <TabList>{tabs}</TabList>
         {panels}
+        <button onClick={onClickToggle}>Toggle View</button>
       </Tabs>
-        </div>
+    </div>
+  );
+};
 
-    )
-}
-
-export default Info
+export default Info;
