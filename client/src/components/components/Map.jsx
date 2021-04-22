@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {
   GoogleMap,
   useLoadScript,
@@ -35,20 +35,18 @@ const center = {
   lat: 43.6532,
   lng: -79.3832,
 };
-//{ setLocation } move inside map
-export default function Map() {
+// move inside map
+export default function Map({ setLocation }) {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
 
-  //console.log(setLocation());
-
   // use useState - when you want a rerender
   // use useRef - when you want to retain state without causing a rerender
   const mapRef = React.useRef();
   //callback function to recieve map and save it in useRef allows access to map elesewhere in the code and will not cause a rerender
-  const onMapLoad = React.useCallback((map) => {
+  const onMapLoad = React.useCallback(async (map) => {
     mapRef.current = map;
     console.log("This is the map")
     console.log(map)
@@ -59,8 +57,8 @@ export default function Map() {
   const panTo = React.useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(14);
-    //if(lat && lng){
-    //setLocation({ lat, lng})}               //*********************************************************first setLocation
+    console.log(`panTo lat: ${lat} -- panTo lng: ${lng}`)
+    setLocation({lat, lng})
   }, []);
 
   if (loadError) return "Error";

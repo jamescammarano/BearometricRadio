@@ -18,11 +18,10 @@ const Main = () => {
     lng: -79.3832,
   });
 
-  const GetWeather = (lat, lng) => {
+  const GetWeather = (lat, lon) => {
     const { loading, error, data } = useQuery(GET_WEATHER, {
-      variables: { lat, lng },
+      variables: { lat, lon },
     });
-
     if (loading) {
       return "Loading...";
     }
@@ -38,9 +37,9 @@ const Main = () => {
     );
   };
 
-  const GetCharts = (tag) => {
+  const GetCharts = (lookupTag) => {
     const { loading, error, data } = useQuery(GET_LASTFM_CHARTS, {
-      variables: { tag },
+      variables: { lookupTag },
     });
     if (loading) {
       return "Loading...";
@@ -68,12 +67,8 @@ const Main = () => {
     }
   };
 
-  console.log(location);
-  
-  if(location){const weather = GetWeather(location.lat, location.lng);
-  console.log(location);}
-  
-
+  const weather = GetWeather(1.5, 1.5)
+  console.log(weather)
   GetCharts(tag);
 
   return (
@@ -82,7 +77,7 @@ const Main = () => {
         <div className="map-container">
           <Map setLocation={setLocation}/>
         </div>
-        <div>{/*weather*/}</div>
+        <div>{weather}</div>
       </div>
       <Info albums={albums} artists={artists} />
     </div>
