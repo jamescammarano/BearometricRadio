@@ -7,6 +7,7 @@ import { GET_LASTFM_CHARTS } from "../../helpers/queries/lastFm";
 import Forecast from "../components/Forecast";
 import { tagsList } from "../../helpers/weatherToTags";
 import Map from "../components/Map";
+import background from "../../assets/img/papabear.png";
 
 const Main = () => {
   let tag = "hardcore+punk";
@@ -30,11 +31,7 @@ const Main = () => {
     }
 
     tag = tagsList[data.weatherReport.description];
-    return (
-      <>
-        <Forecast weatherReport={data.weatherReport} />
-      </>
-    );
+    return <Forecast weatherReport={data.weatherReport} />;
   };
 
   const GetCharts = (tag) => {
@@ -67,16 +64,16 @@ const Main = () => {
     }
   };
 
-  const weather = GetWeather(location.lat, location.lng)
+  const weather = GetWeather(location.lat, location.lng);
   GetCharts(tag);
 
   return (
     <div className="inner">
       <div className="top-level">
         <div className="map-container">
-          <Map setLocation={setLocation}/>
+          <Map setLocation={setLocation} />
         </div>
-        <div>{weather}</div>
+        {weather}<img src={background} alt='papabear' style={{height:'50vh', position:'absolute', right:'0px'}}/>
       </div>
       <Info albums={albums} artists={artists} />
     </div>
@@ -84,4 +81,3 @@ const Main = () => {
 };
 
 export default Main;
-/* */
