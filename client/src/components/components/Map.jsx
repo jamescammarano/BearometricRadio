@@ -17,9 +17,11 @@ import {
 import "@reach/combobox/styles.css";
 import "../../assets/css/mapStyling.css"
 import {mapStyles} from "../../assets/css/mapStyles";
+import locateme from "../../assets/img/locateme.png"
+
 const libraries = ["places"];
 const mapContainerStyle = {
-  height: "300px",
+  height: "50vh",
   width: "100%",
 };
 const options = {
@@ -62,7 +64,7 @@ export default function Map({ setLocation }) {
   if (!isLoaded) return "Loading...";
 
   return (
-    <div>
+    <>
       <Locate panTo={panTo} />
       <Search panTo={panTo} />
 
@@ -74,7 +76,7 @@ export default function Map({ setLocation }) {
         options={options}
         onLoad={onMapLoad}
       ></GoogleMap>
-    </div>
+    </>
   );
 }
 /* can i use center to generate lat and long and pass up rather than passing the function down then trigger a useEffect when that changes rather than passing the function down to maps                                      *****************************************  */
@@ -93,7 +95,7 @@ function Locate({ panTo }) {
           () => null
         );
       }}
-    ><img src="locateme.png" alt="Locate me" />
+    ><img src={locateme} alt="Locate me"  />
     </button>
   );
 }
