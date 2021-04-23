@@ -1,4 +1,5 @@
 import React from "react";
+import background from "../../assets/img/papabear.png";
 
 const Forecast = ({ weatherReport }) => {
   const { feelsLike, temp, description } = weatherReport;
@@ -8,6 +9,7 @@ const Forecast = ({ weatherReport }) => {
       <p>Feels Like: {feelsLike}°C </p>
       <p>Temp: {temp}°C</p>
       <p>Description: {description}</p>
+      
     </div>
   );
 };
