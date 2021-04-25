@@ -58,6 +58,7 @@ export default function Map({ setLocation }) {
     mapRef.current.setZoom(14);
     console.log(`panTo lat: ${lat} -- panTo lng: ${lng}`)
     setLocation({lat, lng})
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loadError) return "Error";
