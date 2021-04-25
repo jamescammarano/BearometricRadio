@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.search {
+  position: absolute;
+  width: 100%;
+  max-width: 300px;
+  margin-top: 3px;
+  z-index: 10
+}
+
+.search input {
+  color: black;
+  font-size: 1.5rem;
+  width: 95%;
+  font-family: 'Roboto', sans-serif;
+}
+
+.locate, .locate:hover  {
+  position: absolute;
+  right: 0px;
+  top: 41%;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  left: 10px;
+
+  z-index: 10;
+  filter:brightness(500%)
+}
+
+.map-container button {
+  margin: 0%;
+  padding: 0;
+  border: none;
+  height: 0px;
+  width: 0px;
+  background: transparent;
+  text-transform: uppercase;
+  font-size: 0px;
+  color: #012353;
+  cursor: pointer;
+  bottom: 0px;
+  border-radius: 0px;
+  margin-left: 0px;
+}
+
+
+.locate:hover {
+  border:2px;
+  border-color: #edc948;
+}
+
+ul {
+  color: black;
+}

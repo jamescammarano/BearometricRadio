@@ -1,16 +1,22 @@
 import { useQuery } from "@apollo/client";
-import React from "react";
+import React, { useState } from "react";
 import Info from "../components/Info";
 import "../../assets/css/style.css";
 import { GET_WEATHER } from "../../helpers/queries/weather";
 import { GET_LASTFM_CHARTS } from "../../helpers/queries/lastFm";
 import Forecast from "../components/Forecast";
 import { tagsList } from "../../helpers/weatherToTags";
+import Map from "../components/Map";
 
 const Main = () => {
   let tag = "hardcore+punk";
   let artists = [];
   let albums = [];
+
+  const [location, setLocation] = useState({
+    lat: 43.6532,
+    lng: -79.3832,
+  });
 
   const GetWeather = (lat, lon) => {
     const { loading, error, data } = useQuery(GET_WEATHER, {
@@ -61,13 +67,15 @@ const Main = () => {
     }
   };
 
-  const weather = GetWeather(1.5, 1.5);
+  const weather = GetWeather(location.lat, location.lng)
   GetCharts(tag);
 
   return (
     <div className="inner">
       <div className="top-level">
-        <div className="map-container">Map</div>
+        <div className="map-container">
+          <Map setLocation={setLocation}/>
+        </div>
         <div>{weather}</div>
       </div>
       <Info albums={albums} artists={artists} />
@@ -76,3 +84,4 @@ const Main = () => {
 };
 
 export default Main;
+/* */
