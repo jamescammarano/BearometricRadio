@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const Forecast = ({ weatherReport }) => {
   const { feelsLike, temp, description } = weatherReport;
   return (
@@ -8,6 +9,7 @@ const Forecast = ({ weatherReport }) => {
       <p>Feels Like: {feelsLike}°C </p>
       <p>Temp: {temp}°C</p>
       <p>Description: {description}</p>
+      
     </div>
   );
 };
