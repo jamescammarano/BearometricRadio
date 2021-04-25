@@ -2,6 +2,7 @@ import React from "react";
 import {
   GoogleMap,
   useLoadScript,
+  GroundOverlay
 } from "@react-google-maps/api";
 import usePlacesAutocomplete, {
   getGeocode,
@@ -30,10 +31,24 @@ const options = {
   rotateControl:true,
   zoomControl: true, // adds zoom control back in
 };
-const center = {
-  lat: 43.6532,
-  lng: -79.3832,
+// const center = {
+//   lat: 43.6532,
+//   lng: -79.3832,
+// };
+
+const bounds = {
+  north: 40.773941,
+  south: 40.712216,
+  east: -74.12544,
+  west: -74.22655
 };
+
+
+const center = {
+  lat: 40.740,
+  lng: -74.18
+};
+
 // move inside map
 export default function Map({ setLocation }) {
   const { isLoaded, loadError } = useLoadScript({
@@ -76,7 +91,14 @@ export default function Map({ setLocation }) {
         center={center} 
         options={options}
         onLoad={onMapLoad}
-      ></GoogleMap>
+
+      >
+      <GroundOverlay
+      key={'url'}
+      url='https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg'
+      bounds={bounds}
+    />
+      </GoogleMap>
     </>
   );
 }
@@ -150,6 +172,34 @@ function Search({ panTo }) {
     </div>
   );
 }
+
+// function RadarTile(map) {
+//   let timestamp = "900913";
+//   let i=0;
+//   map.overlayMapTypes.clear();
+//   map.overlayMapTypes.push(null);
+//   let radarTile = map.ImageMapType({
+//     getTileUrl: function (tile, zoom) {
+//       return (
+//         "https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-" +
+//         900913 +
+//         "/" +
+//         zoom +
+//         "/" +
+//         tile.x +
+//         "/" +
+//         tile.y +
+//         ".png"
+//       );
+//     },
+//     tileSize: new google.maps.Size(256, 256),
+//     opacity: 0.6,
+//     name: "NEXRAD",
+//     isPng: true,
+//   });
+//   map.overlayMapTypes.setAt("0", radarTile);
+
+// }
 
 /*
 
