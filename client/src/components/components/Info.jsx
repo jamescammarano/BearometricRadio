@@ -73,13 +73,17 @@ const Info = ({ albums, artists }) => {
     <div className="">
       <Tabs>
         <TabList>{tabs}</TabList>
-        {panels}
-        <button
-          className="hover:bg-purple-400 text-white hover:text-black"
-          onClick={onClickToggle}
-        >
-          {artistAlbumToggle ? 'See Artists' : 'See Albums'}
-        </button>
+        <div className="flex flex-col p-4">
+          <div>
+            <button
+              className="hover:bg-purple-400 text-white hover:text-black"
+              onClick={onClickToggle}
+            >
+              {artistAlbumToggle ? 'See Artists' : 'See Albums'}
+            </button>
+          </div>
+          <div>{panels}</div>
+        </div>
       </Tabs>
     </div>
   );

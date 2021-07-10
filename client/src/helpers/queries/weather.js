@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const GET_WEATHER = gql`
   query weather($lat: Float!, $lon: Float!) {
