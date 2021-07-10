@@ -1,5 +1,11 @@
-schema @sdl(files: ["OpenWeatherMap/weather-report-owm.graphql", 
-                    "LastFMAlbums/tags.graphql", 
-                    "LastFMArtists/tagsTopArtists.graphql"]) {
+schema
+  @sdl(
+    files: [
+      "OpenWeatherMap/weather-report-owm.graphql"
+      "LastFMAlbums/tags.graphql"
+      "LastFMArtists/tagsTopArtists.graphql"
+      "HERE/geocode.graphql"
+    ]
+  ) {
   query: Query
 }
