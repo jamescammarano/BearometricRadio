@@ -21,6 +21,7 @@ const LocationInput = ({ setLocation }) => {
 
   useEffect(() => {
     setLocation(data);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   const onChange = async (e) => {
