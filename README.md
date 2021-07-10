@@ -1,6 +1,6 @@
 # Bearometric Radio
 A web app that recommends music to listen to based on the weather. This app is built around a StepZen implementation of GraphQL and a React frontend (with a touch of vanilla JS).
-It can be viewed at https://bearometricradio.herokuapp.com/
+It can be viewed at https://bear-o-metric-radio.netlify.app/
 
 ## StepZen GraphQL:
 
