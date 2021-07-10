@@ -1,33 +1,30 @@
-import React from "react";
-import {
-  GoogleMap,
-  useLoadScript,
-} from "@react-google-maps/api";
+import React from 'react';
+import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
-} from "use-places-autocomplete";
+} from 'use-places-autocomplete';
 import {
   Combobox,
   ComboboxInput,
   ComboboxPopover,
   ComboboxList,
   ComboboxOption,
-} from "@reach/combobox";
-import "@reach/combobox/styles.css";
-import "../../assets/css/mapStyling.css"
-import {mapStyles} from "../../assets/css/mapStyles";
-import locateme from "../../assets/img/locateme.png"
+} from '@reach/combobox';
+import '@reach/combobox/styles.css';
+import '../../assets/css/mapStyling.css';
+import { mapStyles } from '../../assets/css/mapStyles';
+import locateme from '../../assets/img/locateme.png';
 
-const libraries = ["places"];
+const libraries = ['places'];
 const mapContainerStyle = {
-  height: "50vh",
-  width: "100%",
+  height: '50vh',
+  width: '100%',
 };
 const options = {
   styles: mapStyles, //go to snazzymaps to change the colors
   disableDefaultUI: true, // removes all the ui elements on the map
-  rotateControl:true,
+  rotateControl: true,
   zoomControl: true, // adds zoom control back in
 };
 const center = {
@@ -47,22 +44,22 @@ export default function Map({ setLocation }) {
   //callback function to recieve map and save it in useRef allows access to map elesewhere in the code and will not cause a rerender
   const onMapLoad = React.useCallback(async (map) => {
     mapRef.current = map;
-    console.log("This is the map")
-    console.log(map)
-    console.log("This is center")
-    console.log(map.center)
+    console.log('This is the map');
+    console.log(map);
+    console.log('This is center');
+    console.log(map.center);
   }, []);
 
   const panTo = React.useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(14);
-    console.log(`panTo lat: ${lat} -- panTo lng: ${lng}`)
-    setLocation({lat, lng})
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    console.log(`panTo lat: ${lat} -- panTo lng: ${lng}`);
+    setLocation({ lat, lng });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (loadError) return "Error";
-  if (!isLoaded) return "Loading...";
+  if (loadError) return 'Error';
+  if (!isLoaded) return 'Loading...';
 
   return (
     <>
@@ -73,7 +70,7 @@ export default function Map({ setLocation }) {
         id="map"
         mapContainerStyle={mapContainerStyle}
         zoom={8}
-        center={center} 
+        center={center}
         options={options}
         onLoad={onMapLoad}
       ></GoogleMap>
@@ -96,7 +93,8 @@ function Locate({ panTo }) {
           () => null
         );
       }}
-    ><img src={locateme} alt="Locate me"  />
+    >
+      <img src={locateme} alt="Locate me" />
     </button>
   );
 }
@@ -125,12 +123,12 @@ function Search({ panTo }) {
       const { lat, lng } = await getLatLng(results[0]); // this is the way to get the lat and lng *************************************************************
       panTo({ lat, lng });
     } catch (error) {
-      console.log("😱 Error: ", error);
+      console.log('😱 Error: ', error);
     }
   };
 
   return (
-    <div className="search">
+    <div className="search ">
       <Combobox onSelect={handleSelect}>
         <ComboboxInput
           value={value}
@@ -140,7 +138,7 @@ function Search({ panTo }) {
         />
         <ComboboxPopover>
           <ComboboxList>
-            {status === "OK" &&
+            {status === 'OK' &&
               data.map(({ id, description }) => (
                 <ComboboxOption key={id} value={description} />
               ))}

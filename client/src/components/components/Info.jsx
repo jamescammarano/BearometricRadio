@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import AlbumInfoPanel from "./AlbumInfoPanel";
-import ArtistInfoPanel from "./ArtistInfoPanel";
+import React, { useState } from 'react';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import AlbumInfoPanel from './AlbumInfoPanel';
+import ArtistInfoPanel from './ArtistInfoPanel';
 
 const Info = ({ albums, artists }) => {
   const [artistAlbumToggle, setArtistAlbumToggle] = useState(true);
@@ -52,7 +52,6 @@ const Info = ({ albums, artists }) => {
         />
       </TabPanel>
     );
-    // Sharptooth when data not found (for now)
   } else {
     tabs = artists.map((tab) => {
       return (
@@ -71,11 +70,16 @@ const Info = ({ albums, artists }) => {
   }
 
   return (
-    <div className="center-me">
+    <div className="">
       <Tabs>
         <TabList>{tabs}</TabList>
         {panels}
-        <button onClick={onClickToggle}>Toggle View</button>
+        <button
+          className="hover:bg-purple-400 text-white hover:text-black"
+          onClick={onClickToggle}
+        >
+          {artistAlbumToggle ? 'See Artists' : 'See Albums'}
+        </button>
       </Tabs>
     </div>
   );

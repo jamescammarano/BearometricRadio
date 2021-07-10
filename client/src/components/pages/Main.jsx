@@ -1,15 +1,15 @@
-import { useQuery } from "@apollo/client";
-import React, { useState } from "react";
-import Info from "../components/Info";
-import "../../assets/css/style.css";
-import { GET_WEATHER } from "../../helpers/queries/weather";
-import { GET_LASTFM_CHARTS } from "../../helpers/queries/lastFm";
-import Forecast from "../components/Forecast";
-import { tagsList } from "../../helpers/weatherToTags";
-import Map from "../components/Map";
+import { useQuery } from '@apollo/client';
+import React, { useState } from 'react';
+import Info from '../components/Info';
+import '../../assets/css/style.css';
+import { GET_WEATHER } from '../../helpers/queries/weather';
+import { GET_LASTFM_CHARTS } from '../../helpers/queries/lastFm';
+import Forecast from '../components/Forecast';
+import { tagsList } from '../../helpers/weatherToTags';
+import Map from '../components/Map';
 
 const Main = () => {
-  let tag = "hardcore+punk";
+  let tag = 'hardcore+punk';
   let artists = [];
   let albums = [];
 
@@ -23,7 +23,7 @@ const Main = () => {
       variables: { lat, lon },
     });
     if (loading) {
-      return "Loading...";
+      return 'Loading...';
     }
     if (error) {
       return `Error! ${error.message}`;
@@ -32,7 +32,7 @@ const Main = () => {
     tag = tagsList[data.weatherReport.description];
     return (
       <>
-        <Forecast weatherReport={data.weatherReport} />
+        <Forecast weatherReport={data.weatherReport} genre={tag} />
       </>
     );
   };
@@ -42,7 +42,7 @@ const Main = () => {
       variables: { tag },
     });
     if (loading) {
-      return "Loading...";
+      return 'Loading...';
     }
     if (error) {
       return `Error! ${error.message}`;
@@ -67,16 +67,16 @@ const Main = () => {
     }
   };
 
-  const weather = GetWeather(location.lat, location.lng)
+  const weather = GetWeather(location.lat, location.lng);
   GetCharts(tag);
 
   return (
-    <div className="inner">
-      <div className="top-level">
-        <div className="map-container">
-          <Map setLocation={setLocation}/>
+    <div className="m-auto border-4 border-purple-500 bg-gray-800">
+      <div className="flex flex-row">
+        <div className="w-2/3">
+          <Map setLocation={setLocation} />
         </div>
-        <div>{weather}</div>
+        {weather}
       </div>
       <Info albums={albums} artists={artists} />
     </div>
