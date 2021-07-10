@@ -78,7 +78,7 @@ const Info = ({ albums, artists }) => {
           className="hover:bg-purple-400 text-white hover:text-black"
           onClick={onClickToggle}
         >
-          Toggle View
+          {artistAlbumToggle ? 'See Artists' : 'See Albums'}
         </button>
       </Tabs>
     </div>

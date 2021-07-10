@@ -7,6 +7,7 @@ body {
   color: white;
   width: 100%;
   border: 1px solid #3c3e43;
+  background: #3f4d61;
 }
 
 .react-tabs__tab-list {
@@ -18,6 +19,7 @@ body {
 }
 
 .react-tabs__tab {
+  background-color: #1f2937;
   height: 100%;
   list-style: none;
   border-left: 2px solid #3c3e43;
@@ -31,9 +33,8 @@ body {
 }
 
 .react-tabs__tab--selected {
-  /* background: #0d2f63; */
-  border-color: #1c1d1f;
-  border-right: 1px solid #3c3e43;
+  background: #3f4d61;
+  border-color: #3f4d61;
   border-bottom: 4px solid #8b5cf6;
   color: white;
 }
