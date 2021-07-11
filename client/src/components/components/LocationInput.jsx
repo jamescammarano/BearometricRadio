@@ -32,7 +32,7 @@ const LocationInput = ({ setLocation }) => {
     e.preventDefault();
   };
   return (
-    <div className="my-3">
+    <div className="px-10 m-auto">
       <form onSubmit={onSubmit} className="text-lg font-bold text-purple-400 ">
         <label htmlFor="location">
           Enter your location to hear the weather:{' '}

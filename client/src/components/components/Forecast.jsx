@@ -1,7 +1,7 @@
 import React from 'react';
 import LocationInput from './LocationInput';
 
-const Forecast = ({ weatherReport, genre, setLocation }) => {
+const Forecast = ({ weatherReport, genre }) => {
   const { feelsLike, temp, description } = weatherReport;
   return (
     <div className="w-full p-10 text-left ">
@@ -10,7 +10,6 @@ const Forecast = ({ weatherReport, genre, setLocation }) => {
       <p>Temp: {temp}°C</p>
       <p>Description: {description}</p>
       <p>Sounds Like: {genre} </p>
-      <LocationInput setLocation={setLocation} />
     </div>
   );
 };
