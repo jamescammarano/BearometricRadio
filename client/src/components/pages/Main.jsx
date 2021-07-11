@@ -6,6 +6,7 @@ import { GET_WEATHER } from '../../helpers/queries/weather';
 import { GET_LASTFM_CHARTS } from '../../helpers/queries/lastFm';
 import Forecast from '../components/Forecast';
 import { tagsList } from '../../helpers/weatherToTags';
+import LocationInput from '../components/LocationInput';
 
 const Main = () => {
   let tag = 'hardcore+punk';
@@ -29,11 +30,7 @@ const Main = () => {
     tag = tagsList[data.weatherReport.description];
     return (
       <>
-        <Forecast
-          setLocation={setLocation}
-          weatherReport={data.weatherReport}
-          genre={tag}
-        />
+        <Forecast weatherReport={data.weatherReport} genre={tag} />
       </>
     );
   };
@@ -77,7 +74,10 @@ const Main = () => {
   return (
     <div className="m-auto bg-gray-800 border-4 border-purple-500">
       <div className="flex flex-row">
-        {weather}
+        <div>
+          {weather}
+          <LocationInput setLocation={setLocation} />
+        </div>
         <Info albums={albums} artists={artists} />
       </div>
     </div>
