@@ -17,6 +17,7 @@ const LocationInput = ({ setLocation }) => {
     }
     return data;
   };
+
   const data = GetLocation(address);
 
   useEffect(() => {

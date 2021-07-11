@@ -6,7 +6,7 @@ type Geocode {
 type Query {
   geocode(address: String!): [Geocode]
     @rest(
-      endpoint: "https://geocode.search.hereapi.com/v1/geocode?q=${address}&apiKey=$apiKey"
+      endpoint: "https://geocode.search.hereapi.com/v1/geocode?q=$address&apiKey=$apiKey"
       resultroot: "items[].position"
       setters: [{ field: "lat", path: "lat" }, { field: "lng", path: "lng" }]
       configuration: "geocode"
