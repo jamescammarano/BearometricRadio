@@ -8,7 +8,7 @@ const Forecast = ({ weatherReport, genre }) => {
       <p>Feels Like: {feelsLike}°C </p>
       <p>Temp: {temp}°C</p>
       <p>Description: {description}</p>
-      <p>Sounds Like: {genre} </p>
+      <p>Sounds Like: {genre.replace(/([+])/g, ' ')} </p>
     </div>
   );
 };
