@@ -1,5 +1,4 @@
 import React from 'react';
-import LocationInput from './LocationInput';
 
 const Forecast = ({ weatherReport, genre }) => {
   const { feelsLike, temp, description } = weatherReport;
